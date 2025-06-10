@@ -2,10 +2,22 @@ package dominio;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
+	//@Column(name="nomecompleto")//caso queira dar um nome diferente no banco de dados
+	//mas vamos deixar o JPA criar as colunas com os mesmos nomes que estão na classe 
 	private String nome;
 	private String email;
 	
