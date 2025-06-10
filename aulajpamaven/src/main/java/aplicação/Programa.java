@@ -32,10 +32,23 @@ public class Programa {
 				
 		*/
 		
+	/*
 		// 2 - Get -> recuperando dados do banco
 		
 		Pessoa p = em.find(Pessoa.class, 2);//passar a classe e o id
 		System.out.println(p);
+	*/
+				
+		// 3 - delete 
+		//Só podemos remover objetos monitorados - destacados não
+		//obj monitorados são os que você acabou de inserir ou buscou no banco
+		//sem fechar o entityManager.
+		Pessoa p = em.find(Pessoa.class, 2);
+		
+		//sem transação não exclui
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
 		
 		System.out.println("Pronto!");
 		
